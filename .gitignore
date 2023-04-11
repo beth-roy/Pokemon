@@ -1,0 +1,8 @@
+node_modules
+client-react/build
+server/src/config/config.json
+server/src/assets/uploads
+ecosystem.config.json
+.env
+server/logs/all.log
+server/logs/error.log
