@@ -28,16 +28,6 @@ app.get('/generation1', (req, res) => {
     .then(response => {
       const species = response.data.results;
       console.log(species)
-      const a = species.map(s => {
-        axios.get(s.url).then(response => {
-           pokemondata = response.data;
-        })
-        .catch(error => {
-          console.log(error);
-          res.status(500).send('An error occurred');
-        });
-      })
-      
       res.status(200).send(species);
     })
     .catch(error => {
@@ -45,6 +35,34 @@ app.get('/generation1', (req, res) => {
       res.status(500).send('An error occurred');
     });
 });
+
+//Task given during interview to hit each url and return that data
+
+
+// app.get('/generation1', (req, res) => {
+//   axios.get('https://pokeapi.co/api/v2/pokemon?limit=151')
+//     .then(response => {
+//       const species = response.data.results;
+//       console.log(species)
+//       const pokemonPromises = species.map(s => {
+//         return axios.get(s.url);
+//       })
+      
+//       Promise.all(pokemonPromises)
+//         .then(pokemonResponses => {
+//           const pokemonData = pokemonResponses.map(response => response.data);
+//           res.status(200).send(pokemonData);
+//         })
+//         .catch(error => {
+//           console.log(error);
+//           res.status(500).send('An error occurred');
+//         });
+//     })
+//     .catch(error => {
+//       console.log(error);
+//       res.status(500).send('An error occurred');
+//     });
+// }); 
 
 app.get('/color', (req, res) => {
   const color = req.query.color;
